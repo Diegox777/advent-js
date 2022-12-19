@@ -5,12 +5,14 @@ function getCompleted(part, total) {
   const b = 3600 * parseInt(th) + 60 * parseInt(tm) + parseInt(ts);
   
   const getGCD = (a, b) => {
-    while (b != 0) {
+    let A = [];
+    [...Array(5)].forEach((v, i) => {
       const m = a % b;
       a = b;
       b = m;
-    }
-    return a;
+      A.push(a);
+    });
+    return A[A.findIndex(e => e == 0) - 1];
   }
   const gcd = getGCD(a, b);
   return (a / gcd) + '/' + (b / gcd)
